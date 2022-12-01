@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">Nasa</string>
+    <string name="app_name">NASA\'s Astronomy</string>
+    <string name="please_try_after_some_time">No Data Available, Please try after some time</string>
+    <string name="heading_text">NASA Astronomy\'s picture of the day</string>
+    <string name="fav_heading_text">Favourite Pictures</string>
+    <string name="pick_date">Pick Date</string>
+    <string name="POTD_SCREEN">POTD_SCREEN</string>
+    <string name="no_internet">Internet is not available!</string>
+    <string name="no_video_support">Video support is not available in this version</string>
+    <string name="no_favourite_pic">No Favourite picture available</string>
 </resources>
