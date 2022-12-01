@@ -1,5 +1,6 @@
 package com.gs.nasa.pod.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -7,11 +8,14 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.snackbar.Snackbar
+import com.google.gson.Gson
 import com.gs.nasa.NasaPotdApplication
 import com.gs.nasa.R
 import com.gs.nasa.databinding.ActivityMainBinding
+import com.gs.nasa.favourite.FavouriteActivity
 import com.gs.nasa.pod.data.model.Data
 import com.gs.nasa.pod.di.component.DaggerPicturesActivityComponent
+import com.gs.nasa.pod.utils.Constants.FAVOURITE_PICTURES
 import com.gs.nasa.pod.viewmodel.PicturesViewModel
 import com.gs.nasa.pod.viewmodel.PicturesViewModelFactory
 import com.gs.nasa.pod.viewmodel.model.PotdViewState
@@ -137,6 +141,12 @@ class PicturesActivity : AppCompatActivity() {
     }
 
     private fun redirectToFavourites(data: List<Data>) {
-
+        val intent = Intent(this, FavouriteActivity::class.java)
+        intent.putExtra(FAVOURITE_PICTURES, Gson().toJson(data))
+        startActivity(intent)
+        overridePendingTransition(
+          R.anim.slide_in_up,
+           R.anim.slide_out_up
+        )
     }
 }
