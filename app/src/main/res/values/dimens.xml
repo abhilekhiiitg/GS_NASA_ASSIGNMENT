@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <dimen name="smaller_margin">8dp</dimen>
+    <dimen name="small_margin">16dp</dimen>
+    <dimen name="margin_32">32dp</dimen>
+    <dimen name="shimmer_placeholder_size">100dp</dimen>
+</resources>

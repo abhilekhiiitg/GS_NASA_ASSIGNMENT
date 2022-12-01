@@ -1,7 +1,7 @@
 package com.gs.nasa.pod.di.component
 
-import android.app.Activity
 import com.gs.nasa.pod.di.PerActivity
+import com.gs.nasa.pod.view.PicturesActivity
 import dagger.Component
 
 @PerActivity
@@ -9,7 +9,7 @@ import dagger.Component
     dependencies = [AppComponent::class]
 )
 interface PicturesActivityComponent {
-    fun inject(activity: Activity)
+    fun inject(activity: PicturesActivity)
 
     @Component.Builder
     interface Builder {
