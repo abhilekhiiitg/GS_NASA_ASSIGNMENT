@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/shimmerViewContainer"
@@ -11,7 +13,8 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/cardView">
+        app:layout_constraintTop_toTopOf="@+id/cardView"
+        >
 
         <include layout="@layout/shimmer_placeholder_potd" />
     </com.facebook.shimmer.ShimmerFrameLayout>
@@ -28,30 +31,34 @@
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="6dp"
         android:layout_marginLeft="@dimen/margin_medium"
         android:layout_marginRight="@dimen/margin_medium"
+        android:elevation="6dp"
         android:visibility="gone"
         app:cardCornerRadius="@dimen/margin_small"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header">
+        app:layout_constraintTop_toBottomOf="@+id/header"
+        >
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            >
 
             <ImageView
                 android:id="@+id/image"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/lottie_top_margin"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                />
 
 
             <com.airbnb.lottie.LottieAnimationView
@@ -62,7 +69,8 @@
                 app:lottie_autoPlay="false"
                 app:lottie_loop="false"
                 app:lottie_rawRes="@raw/heart"
-                app:lottie_speed="1.00" />
+                app:lottie_speed="1.00"
+                />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/title"
@@ -70,9 +78,10 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/image"
                 android:layout_margin="@dimen/smaller_margin"
-                android:text="Title"
-                android:textColor="#000000"
-                android:textStyle="bold" />
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                tools:text="Title"
+                />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/date"
@@ -80,8 +89,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/title"
                 android:layout_margin="@dimen/smaller_margin"
-                android:text="Date"
-                android:textColor="#000000" />
+                android:textColor="@color/black"
+                tools:text="Date"
+                />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/description"
@@ -89,8 +99,12 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/date"
                 android:layout_margin="@dimen/smaller_margin"
-                android:text="Description"
-                android:textColor="#000000" />
+                android:ellipsize="end"
+                android:inputType="none"
+                android:maxLines="20"
+                android:textColor="@color/black"
+                tools:text="Description"
+                />
         </RelativeLayout>
 
     </com.google.android.material.card.MaterialCardView>
@@ -104,7 +118,8 @@
         android:contentDescription="date picker"
         android:src="@drawable/ic_calendar_icon"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/favBtn"
@@ -116,5 +131,6 @@
         android:src="@drawable/ic_heart_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/datePickerBtn"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

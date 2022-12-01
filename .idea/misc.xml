@@ -6,6 +6,8 @@
         <entry key="app/src/main/res/drawable/ic_calendar_icon.xml" value="0.185" />
         <entry key="app/src/main/res/drawable/ic_download.xml" value="0.185" />
         <entry key="app/src/main/res/drawable/ic_heart_icon.xml" value="0.185" />
+        <entry key="app/src/main/res/layout-land/activity_main.xml" value="0.12638549804687502" />
+        <entry key="app/src/main/res/layout-land/activity_splash.xml" value="0.41354166666666664" />
         <entry key="app/src/main/res/layout/activity_favourite.xml" value="0.40989583333333335" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.30185185185185187" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.2955586751302084" />
