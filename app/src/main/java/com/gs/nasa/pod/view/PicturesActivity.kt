@@ -19,7 +19,9 @@ import com.gs.nasa.pod.utils.Constants.FAVOURITE_PICTURES
 import com.gs.nasa.pod.viewmodel.PicturesViewModel
 import com.gs.nasa.pod.viewmodel.PicturesViewModelFactory
 import com.gs.nasa.pod.viewmodel.model.PotdViewState
-import java.util.*
+import java.util.Calendar
+import java.util.Date
+import java.util.TimeZone
 import javax.inject.Inject
 
 class PicturesActivity : AppCompatActivity() {
@@ -40,8 +42,6 @@ class PicturesActivity : AppCompatActivity() {
 
         mainViewModel = ViewModelProvider(this, mainViewModelFactory)[PicturesViewModel::class.java]
         mainViewModel.fetchPictureOfTheDay(getTimeInFormat(System.currentTimeMillis()))
-
-
         mainViewModel.viewStateLiveData.observe(this) {
             when (it) {
                 is PotdViewState.Success<*> -> handleSuccessState(it.data)
@@ -58,10 +58,7 @@ class PicturesActivity : AppCompatActivity() {
             datePicker.addOnPositiveButtonClickListener {
                 mainViewModel.fetchPictureOfTheDay(getTimeInFormat(it))
             }
-            datePicker.show(
-                supportFragmentManager,
-                getString(R.string.POTD_SCREEN)
-            )
+            datePicker.show(supportFragmentManager, getString(R.string.POTD_SCREEN))
         }
     }
 
@@ -74,9 +71,11 @@ class PicturesActivity : AppCompatActivity() {
     private fun getTimeInFormat(time: Long): String {
         val calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
         calendar.time = Date(time)
-        return "${calendar.get(Calendar.YEAR)}-" +
-                "${calendar.get(Calendar.MONTH) + 1}-${calendar.get(Calendar.DAY_OF_MONTH)}"
-
+        val year = calendar.get(Calendar.YEAR)
+        val month = calendar.get(Calendar.MONTH) + 1
+        val day = calendar.get(Calendar.DAY_OF_MONTH)
+        val formattedDay = if (calendar.get(Calendar.DAY_OF_MONTH) < 10) "0$day" else day
+        return "${year}-${month}-${formattedDay}"
     }
 
     private fun setupDagger() {
@@ -92,7 +91,6 @@ class PicturesActivity : AppCompatActivity() {
             is Data -> setPictureOfTheDayView(data)
             is List<*> -> redirectToFavourites(data as List<Data>)
         }
-
     }
 
     private fun setPictureOfTheDayView(data: Data) {
@@ -108,6 +106,7 @@ class PicturesActivity : AppCompatActivity() {
 
         Glide.with(this).load(data.url).placeholder(R.drawable.ic_download)
             .error(R.drawable.ic_download).into(binding.image)
+
         binding.favImage.setOnClickListener {
             isFavourite = !isFavourite
             if (isFavourite)
@@ -144,9 +143,6 @@ class PicturesActivity : AppCompatActivity() {
         val intent = Intent(this, FavouriteActivity::class.java)
         intent.putExtra(FAVOURITE_PICTURES, Gson().toJson(data))
         startActivity(intent)
-        overridePendingTransition(
-          R.anim.slide_in_up,
-           R.anim.slide_out_up
-        )
+        overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up)
     }
 }

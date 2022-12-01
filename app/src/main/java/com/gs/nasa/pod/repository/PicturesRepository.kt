@@ -20,6 +20,17 @@ class PicturesRepository @Inject constructor(
     private val context: Context,
 ) {
 
+    /**
+     * To get picture of the day
+     *
+     * @param date - to get picture of the day on given date
+     *
+     * @returns picture of the day from server if network is available
+     * OR @returns picture of the day from db is network is not available and data is present in db
+     * OR @returns error - if media type is video
+     * OR @returns error - if internet is not available and data is not present in db
+     * OR @returns error - if server response is not successful
+     */
     suspend fun getPictureOfTheDay(date: String) = flow {
         if (connectivityManager.isInternetConnected()) {
             val result = apiService.getPictureOfTheDay(date)
@@ -30,32 +41,40 @@ class PicturesRepository @Inject constructor(
                         potd.isFavourite = db.getPicturesDao().isFavouritePictures(potd.url)
                         emit(PotdResult.Success(potd))
                     } else emit(PotdResult.Error(context.getString(R.string.no_video_support)))
-                } ?: run {
-                    emit(PotdResult.Empty())
-                }
+                } ?: run { emit(PotdResult.Empty()) }
             } else {
-                val errorMessage =
-                    Gson().fromJson(result.errorBody()?.string() ?: "", ApiError::class.java)
-                emit(PotdResult.Error(errorMessage.msg ?: ""))
+                val errorMsg = Gson().fromJson(result.errorBody()?.string() ?: "", ApiError::class.java)
+                emit(PotdResult.Error(errorMsg.msg ?: ""))
             }
         } else {
             val reviews = db.getPicturesDao().getPictureOfTheDay(date)
-            if (reviews == null) emit(PotdResult.Empty(context.getString(R.string.no_internet))) else emit(
-                PotdResult.Success(
-                    reviews
-                )
-            )
+            if (reviews == null) emit(PotdResult.Empty(context.getString(R.string.no_internet))) else emit(PotdResult.Success(reviews))
         }
     }.catch {
         emit(PotdResult.Error())
     }
 
+
+    /**
+     * To get all Favourite Pictures marked by user
+     *
+     * @returns empty status if no picture is marked as favourite
+     * OR
+     * @returns list of favourite pictures
+     */
     suspend fun getFavouritePictures() = flow {
         val favList = db.getPicturesDao().getAllFavouritePictures()
         if (favList.isEmpty()) emit(PotdResult.Empty(context.getString(R.string.no_favourite_pic)))
         else emit(PotdResult.Success(favList))
     }
 
+
+    /**
+     * Update the favourite status in db
+     *
+     * @param isFav boolean value to set the status
+     * @param url - aganist which status is to be update
+     */
     suspend fun updateFavouriteStatus(isFav: Boolean, url: String) {
         db.getPicturesDao().updateFavouriteStatus(isFav, url)
     }
