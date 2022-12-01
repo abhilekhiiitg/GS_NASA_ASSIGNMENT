@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.facebook.shimmer.ShimmerFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:shimmer="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/shimmerViewContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        shimmer:layout_constraintBottom_toTopOf="parent"
+        shimmer:layout_constraintEnd_toStartOf="parent"
+        shimmer:layout_constraintStart_toStartOf="parent"
+        shimmer:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/shimmer_placeholder_fav" />
+
+            <include layout="@layout/shimmer_placeholder_fav" />
+
+            <include layout="@layout/shimmer_placeholder_fav" />
+
+            <include layout="@layout/shimmer_placeholder_fav" />
+
+            <include layout="@layout/shimmer_placeholder_fav" />
+
+            <include layout="@layout/shimmer_placeholder_fav" />
+
+            <include layout="@layout/shimmer_placeholder_fav" />
+
+            <include layout="@layout/shimmer_placeholder_fav" />
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/header"
+        style="@style/TextAppearance.Material3.BodyLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/medium_height"
+        android:text="@string/fav_heading_text"
+        android:textSize="@dimen/sp_18"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_48"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/shimmerViewContainer"
+        tools:itemCount="4"
+        android:paddingBottom="@dimen/dp_48"
+        tools:listitem="@layout/item_favourite" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
