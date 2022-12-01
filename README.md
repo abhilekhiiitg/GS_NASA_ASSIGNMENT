@@ -30,6 +30,10 @@
  - Video support is not provided in this version
  - Dark mode support
  
- #
- #
+ ![WhatsApp Image 2022-12-01 at 11 28 43 PM](https://user-images.githubusercontent.com/6941625/205126406-cb481fe8-27a5-4190-a4da-d2ab8cbd6e21.jpeg)
+
  
+ ![WhatsApp Image 2022-12-01 at 11 28 42 PM](https://user-images.githubusercontent.com/6941625/205126414-3525e43b-015b-4f76-8b50-00852e62944c.jpeg)
+
+![WhatsApp Image 2022-12-01 at 11 28 14 PM](https://user-images.githubusercontent.com/6941625/205126428-2092cbd3-ee1c-4ca0-8828-7a972f46a2fe.jpeg)
+
