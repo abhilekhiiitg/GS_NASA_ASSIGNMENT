@@ -1,7 +1,7 @@
 # Assignment: 
 - Design a mobile app that displays NASA’sAstronomy picture of the day
 
-# Basic features provided -
+# Basic features provided 
 - Allow users to search for the picture for a date of their choice
 - Allow users to create a list of &quot;favorite&quot; listings
 - Display date, explanation, Title and the image / video of the day
@@ -9,7 +9,7 @@
 
  # Project Description:
  - Initially Today picture will be fetched from server and shown to the user
- - url: https://api.github.com/repos/freeCodeCamp/freeCodeCamp/pulls?state=closed
+ - url: [https://api.github.com/repos/freeCodeCamp/freeCodeCamp/pulls?state=closed](https://api.nasa.gov/planetary/apod?api_key=rCu2dOglgtb1RcjzeutQbeDo4FRbwL8oyuBhJr6h)
  - After loading data from server, data get saved in DB.
  - So next time onwards, if Internet is not available then data will be fetched from local storage.
  - user can maek picture as favourite by clicking red heart on the top
@@ -25,6 +25,10 @@
  - Behavior: Offline database
  - Other third party libraries: Moshi,Glide
  - testing: Junit,mockito
+
+ # Note :
+ - Video support is not provided in this version
+ - Dark mode support
  
  #
  #
