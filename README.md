@@ -1,5 +1,6 @@
 # Assignment: 
 - Design a mobile app that displays NASA’sAstronomy picture of the day
+- Assignment question is available on this link ->>
 [Coding challenge (APOD) - L2.docx](https://github.com/abhilekhiiitg/GS_NASA_ASSIGNMENT/files/10214040/Coding.challenge.APOD.-.L2.docx)
 
 
