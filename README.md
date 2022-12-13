@@ -1,5 +1,8 @@
 # Assignment: 
 - Design a mobile app that displays NASA’sAstronomy picture of the day
+[Coding challenge (APOD) - L2.docx](https://github.com/abhilekhiiitg/GS_NASA_ASSIGNMENT/files/10214040/Coding.challenge.APOD.-.L2.docx)
+
+
 
 # Basic features provided 
 - Allow users to search for the picture for a date of their choice
